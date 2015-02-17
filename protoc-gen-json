@@ -28,7 +28,6 @@
 # people.
 
 from json_protobuf.generator import file_source, file_header
-# , json_protobuf_header, json_protobuf_source
 from google.protobuf.descriptor import FieldDescriptor
 from google.protobuf.descriptor_pb2 import FileOptions
 from google.protobuf.compiler.plugin_pb2 import CodeGeneratorRequest, CodeGeneratorResponse
@@ -68,13 +67,6 @@ for i in range(0, len(request.proto_file)):
     f.name = '%s.pb-json.cc' % package.replace('.', '/').lower()
     f.content = file_source(file_descriptor, ltag)
 
-#f = response.file.add()
-#f.name = 'json-protobuf.h'
-#f.content = json_protobuf_header(ltag)
-
-#f = response.file.add()
-#f.name = 'json-protobuf.cc'
-#f.content = json_protobuf_source(ltag)
 
 stdout.write(response.SerializeToString())
 exit(0)
