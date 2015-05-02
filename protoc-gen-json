@@ -26,7 +26,7 @@
 #
 # Yes, it is currently written in Python. That's how bootstrapping works,
 # people.
-__requires__ = 'protobuf>=2.4.1'
+__requires__ = 'protobuf>=2.3.0'
 
 import pkg_resources
 from json_protobuf.generator import file_source, file_header
