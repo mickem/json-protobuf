@@ -1,0 +1,9 @@
+*        text=auto
+#sources
+*.py     text
+
+# Compiled Object files
+*.pyc    binary
+
+# Executables
+protoc-gen-json text eol=lf
