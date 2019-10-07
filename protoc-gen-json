@@ -38,7 +38,7 @@ from google.protobuf.descriptor_pb2 import FileOptions
 from google.protobuf.compiler.plugin_pb2 import CodeGeneratorRequest, CodeGeneratorResponse
 from sys import stdin, stdout, stderr
 
-serialized = stdin.read()
+serialized = stdin.buffer.read()
 request = CodeGeneratorRequest()
 request.ParseFromString(serialized)
 
@@ -85,6 +85,6 @@ for i in range(0, len(request.proto_file)):
     stderr.write('Failed to generate %s: %s\n'%(package, e))
 
 
-stdout.write(response.SerializeToString())
+stdout.buffer.write(response.SerializeToString())
 exit(0)
 

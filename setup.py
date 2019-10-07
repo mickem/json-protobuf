@@ -1,4 +1,4 @@
-#  Copyright 2014 Michael Medin
+#  Copyright 2019 Michael Medin
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -14,15 +14,25 @@
 
 from setuptools import setup, find_packages
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name             = 'json-protobuf',
-    version          = '0.0.1',
-    packages         = [ 'json_protobuf' ],
-    scripts          = ['protoc-gen-json', 'protoc-gen-json.cmd'],
-    install_requires = [ 'protobuf>=2.3.0' ],
+    version          = '1.0.0',
     author           = 'Michael Medin',
     author_email     = 'michael@medin.name',
     description      = 'Json protocol buffer code generator',
-    license          = 'Apache 2.0',
-    url              = 'http://github.com/mickem/json-protobuf'
+    long_description = long_description,
+    long_description_content_type="text/markdown",
+    url              = 'http://github.com/mickem/json-protobuf',
+    packages         = [ 'json_protobuf' ],
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent",
+    ],
+    scripts          = ['protoc-gen-json', 'protoc-gen-json.cmd'],
+    python_requires  = '>=3.6',
+    install_requires = [ 'protobuf>=3.0.0' ]
 )

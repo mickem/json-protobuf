@@ -11,9 +11,16 @@ except Exception as e:
 		from os.path import dirname, realpath
 		path = dirname(realpath(__file__))
 		sys.path.append(path)
-		execfile("%s/protoc-gen-json"%path)
+		try:
+			filename = '%s/protoc-gen-json'%path
+			exec(compile(open(filename, 'r').read(), filename, 'exec'))
+		except Exception as e:
+			sys.stderr.write('Failed to generate -%s-%s'%(type(e).__name__, e))
+			import traceback
+			print(traceback.format_exc())
+			sys.exit(1)
 	else:
 		sys.stderr.write('Failed to generate -%s-%s'%(type(e).__name__, e))
 		import traceback
-		print traceback.format_exc()
+		print(traceback.format_exc())
 		sys.exit(1)
